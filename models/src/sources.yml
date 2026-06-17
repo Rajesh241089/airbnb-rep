@@ -1,0 +1,31 @@
+version: 2
+sources:
+  - name: airbnb
+    schema: raw
+    tables:
+      - name: listings
+        identifier: raw_listings
+        description: This raw table represents all properties owned by various hosts
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+          - name: room_type
+            tests:
+              - dbt_expectations.expect_column_distinct_count_to_equal:
+                  value: 4
+          - name: price   
+            tests:
+              - dbt_expectations.expect_column_values_to_match_regex:
+                  regex: "^\\\\$[0-9][0-9\\\\.]+$"          
+
+      - name: hosts
+        identifier: raw_hosts
+        description: This raw table represents all property owners and their details
+      - name: reviews
+        identifier: raw_reviews
+        description: This raw table represents all property reviews. Can be used for
+          sentimental analysis using AI
+      - name: sales
+        identifier: sales_us

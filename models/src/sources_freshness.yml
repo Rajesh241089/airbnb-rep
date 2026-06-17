@@ -1,0 +1,12 @@
+sources:
+  - name: airbnb
+    schema: raw
+
+    tables:
+      - name: source_freshness_table
+        freshness: # make this a little more strict
+          warn_after: {count: 49, period: minute}
+          error_after: {count: 50, period: minute}
+          # Apply a where clause in the freshness query
+          #filter: datediff('day', _etl_loaded_at, current_timestamp) < 2
+        loaded_at_field: created_at  
