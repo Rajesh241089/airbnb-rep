@@ -6,12 +6,12 @@
       account: kv12688.us-east-2.aws
 
       # User/password auth
-      user: admin
-      password: Rajesh@24101989
+      user: dbt_u1
+      password: doe
 
-      role: ACCOUNTADMIN
+      role: dbt_developers
       database: AIRBNB
-      warehouse: COMPUTE_WH
+      warehouse: dbt_warehouse
       # in the future you should switch this schema to use a new environment variable
       # definitely switch this to your schema though
       schema: dev
