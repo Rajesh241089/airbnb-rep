@@ -1,4 +1,4 @@
-:deploy_dbt_airbnb
+deploy_dbt_airbnb:
   target: dev
   outputs:
     dev:
